@@ -1,0 +1,80 @@
+module bool
+
+import pair
+
+data bool = true | false
+
+id_bool: bool -> bool
+id_bool b = b
+
+constFalse: bool -> bool
+constFalse _ = false
+
+constTrue: bool -> bool
+constTrue _ = true
+
+not: bool -> bool
+not true = false
+not _ = true
+
+-- Exam Problem #2: There are 16 possible ways to fill in the result column for a truth table for
+-- a binary Boolean function, and there are thus exactly 16 such functions, and no more.
+
+andp: pair bool bool -> bool
+andp (mkPair true true) = true
+andp (mkPair true _) = false
+andp (mkPair _ true) = false
+andp (mkPair _ _) = false
+
+orp: pair bool bool -> bool
+orp (mkPair true true) = true
+orp (mkPair true _) = true
+orp (mkPair _ true) = true
+orp (mkPair _ _) = false
+
+nandp: pair bool bool -> bool
+nandp (mkPair true true) = false
+nandp (mkPair true _) = true
+nandp (mkPair _ true) = true
+nandp (mkPair _ _) = true
+
+xorp: pair bool bool -> bool
+xorp (mkPair true false) = true
+xorp (mkPair _ true) = true
+xorp (mkPair true true) = false
+xorp (mkPair false false) = false
+
+pand: bool -> bool -> bool
+pand true = id_bool
+pand = constFalse
+
+por: bool -> bool -> bool
+por true true = constTrue true
+por true false = constTrue false
+por false true = id_bool true
+por false false = id_bool false
+
+pxor: bool -> bool -> bool
+pxor true true = not true
+pxor true false = not false
+pxor false true = id_bool true
+pxor false false = id_bool false
+
+pnand: bool -> bool -> bool
+pnand true true = not true
+pnand true false = not false
+pnand false true = constTrue true
+pnand false false = constTrue false
+
+-- binary functions (bool -> bool -> bool), implicit
+
+and: bool -> bool -> bool
+and true true = true
+and _ _ = false
+
+uf: bool -> bool
+uf = (and true)
+
+or: bool -> bool -> bool
+or false false = false
+or _ _ = true

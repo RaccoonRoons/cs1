@@ -1,0 +1,17 @@
+Welcome to the Idris REPL!
+Idris 0.9.18.1-git:b6c9ef8
+
+Type checking ./Bit.idr
+λΠ> :t one 
+one : Bit
+λΠ> : zero
+Unrecognized command: zero
+λΠ> :t zero
+zero : Bit
+λΠ> :t Bit
+Bit : Type
+λΠ> change zero
+one : Bit
+λΠ> change one
+zero : Bit
+λΠ> 

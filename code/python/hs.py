@@ -8,4 +8,9 @@ def hs(n):
             n = (n * 3 + 1)
         b = b + 1
     print(1)
+    print(None)
     print(b + 1)
+    
+    
+    
+    
